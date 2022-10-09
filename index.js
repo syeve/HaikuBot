@@ -1,6 +1,6 @@
 const { Client, GatewayIntentBits } = require('discord.js');
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.MessageContent] });
-const { clientId, guildId, token, generalDiscordId } = require('./config.json');
+const { token, generalDiscordId } = require('./config.json');
 
 var pronouncing = require('pronouncing');
 
@@ -33,9 +33,7 @@ async function haikuBuilder(channelID) {
 
     const channel = client.channels.cache.get(channelID);
     var messages = [];
-    var lineOne = [];
-    var lineTwo = [];
-    var lineThree = [];
+    var lineOne, lineTwo, lineThree = [];
 
     var result = '';
 
@@ -89,5 +87,3 @@ async function haikuBuilder(channelID) {
     const sendToChannel = client.channels.cache.get(channelID);
     sendToChannel.send(result);
 }
-
-
